@@ -1,0 +1,152 @@
+/*
+.item-list-container {
+  padding: 40px 20px;
+  background-color: rgb(144, 238, 144);
+}
+
+.item-list-container h2 {
+  font-size: 2rem;
+  color: rgb(0, 128, 0);
+}
+
+.item-list-container p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  padding: 20px;
+  flex: 0 0 calc(33.33% - 20px);
+  box-sizing: border-box;
+}
+
+::marker {
+  color: transparent;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  width: 100%; 
+  flex-direction: column;
+}
+
+.loader-container p {
+  margin-top: 10px; 
+  font-size: 1.2rem;
+  color: #333;
+}
+  */
+
+  .item-list-container {
+    padding: 40px 20px;
+    background-color: rgb(144, 238, 144);
+  }
+  
+  .item-list-container h2 {
+    font-size: 2rem;
+    color: rgb(0, 128, 0);
+    text-align: center;
+  }
+  
+  .item-list-container p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+    margin-top: 20px;
+  }
+  
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    padding: 20px;
+    flex: 0 0 calc(33.33% - 20px);
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  li:hover {
+    transform: translateY(-10px);
+  }
+  
+  ::marker {
+    color: transparent;
+  }
+  
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .loader-container p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Estilos para los productos en pantalla pequeña */
+  @media (max-width: 768px) {
+    li {
+      flex: 0 0 calc(50% - 20px); /* 2 columnas en pantallas pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    li {
+      flex: 0 0 100%; /* 1 columna en pantallas extra pequeñas */
+    }
+  }
+  
+  /* Estilo para mensaje de error */
+  .error-message {
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  .error-message button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff4f4f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .error-message button:hover {
+    background-color: #ff3333;
+  }
+  #root > div > div > ul > li > img {
+    width: 200px;
+    height: 200px;
+  }
+  #root > div > div > h2 {
+    padding-bottom: 25px;
+  }

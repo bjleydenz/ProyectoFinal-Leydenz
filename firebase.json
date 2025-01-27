@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "psmyplantsapp",
+    "public": "public"
+  },
+  "emulators": {
+    "dataconnect": {
+      "dataDir": "dataconnect/.dataconnect/pgliteData"
+    }
+  },
+  "dataconnect": {
+    "source": "dataconnect"
+  }
+}

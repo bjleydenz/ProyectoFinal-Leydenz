@@ -1,0 +1,72 @@
+.item-detail-container {
+    padding: 40px 20px;
+    background-color: rgb(144, 238, 144); /* Color de fondo consistente con el diseño */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .item-detail-container h2 {
+    font-size: 2.5rem;
+    color: rgb(0, 128, 0);
+    margin-bottom: 10px;
+  }
+  
+  .item-detail-container p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  .item-detail-container img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item-detail-container .item-description {
+    font-style: italic;
+    color: rgb(85, 107, 47);
+  }
+  
+  .item-detail-container .item-price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgb(34, 139, 34);
+    margin-top: 10px;
+  }
+  
+  .item-detail-container .item-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .item-detail-container .item-actions button {
+    background-color: rgb(0, 128, 0);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .item-detail-container .item-actions button:hover {
+    background-color: rgb(34, 139, 34);
+    transform: scale(1.05);
+  }
+  
+  .item-detail-container .loading, .item-detail-container .error {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+  }
+  
