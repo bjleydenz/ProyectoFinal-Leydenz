@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'; 
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Circles } from 'react-loader-spinner';
 import './ItemListContainer.css';
 import { getProducts } from '../../config/firebase';
-import { Circles } from 'react-loader-spinner';
+import ItemList from './ItemList';
 
 // eslint-disable-next-line react/prop-types
 const ItemListContainer = ({ mensaje }) => {
@@ -29,7 +29,7 @@ const ItemListContainer = ({ mensaje }) => {
   return (
     <div className="item-list-container">
       <h2>{mensaje}</h2>
-      
+
       {loading ? (
         <div className="loader-container">
           <Circles 
@@ -47,21 +47,7 @@ const ItemListContainer = ({ mensaje }) => {
           <button onClick={() => setLoading(true)}>Reintentar</button>
         </div>
       ) : (
-        <ul className="item-list">
-          {items.map((item) => (
-            <li key={item.id} className="item">
-              <img
-                src={item.image}
-                className="item-image"
-                alt={`Imagen de ${item.name}`}
-              />
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-              <p>Precio: ${item.price}</p>
-              <Link to={`/item/${item.id}`} className="detail-link">Ver detalle</Link>
-            </li>
-          ))}
-        </ul>
+        <ItemList items={items} />
       )}
     </div>
   );

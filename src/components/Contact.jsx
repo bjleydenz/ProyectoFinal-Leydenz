@@ -32,17 +32,9 @@ const Contact = () => {
     }
 
     try {
-      const docRef = await addDoc(collection(db, "contactperson"), formData);
-      console.log("Documento agregado con ID: ", docRef.id);
+      await addDoc(collection(db, "contactperson"), formData);
       setSubmitted(true);
       setError(null);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        message: "",
-      });
     } catch (err) {
       console.error("Error al enviar el formulario: ", err);
       setError("Hubo un problema al enviar el formulario. Inténtalo de nuevo.");
@@ -52,66 +44,69 @@ const Contact = () => {
   return (
     <div className="contact-form-container">
       <h2>Contáctanos</h2>
-      {submitted && (
+      {submitted ? (
         <p className="success-message">
           ¡Gracias por contactarnos! Pronto te responderemos.
         </p>
+      ) : (
+        <>
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleSubmit} className="contact-form">
+            <label>
+              Nombre:
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              Apellido:
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              Teléfono:
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              Correo:
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              Mensaje:
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </label>
+            <button type="submit" className="submit-button">
+              Enviar
+            </button>
+          </form>
+        </>
       )}
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit} className="contact-form">
-        <label>
-          Nombre:
-          <input
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Apellido:
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Teléfono:
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Correo:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Mensaje:
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </label>
-        <button type="submit" className="submit-button">
-          Enviar
-        </button>
-      </form>
     </div>
   );
 };

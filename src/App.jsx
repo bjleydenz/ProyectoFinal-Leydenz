@@ -26,7 +26,7 @@ function App() {
             <Route path="/carrito" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/user-form" element={<UserForm />} />
-            <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/thank-you/:orderId" element={<ThankYou />} />
             <Route path="/contacto" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

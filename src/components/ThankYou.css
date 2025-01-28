@@ -1,0 +1,31 @@
+@media print {
+    #root > div > div > button {
+      display: none;
+    }
+    #root > div > nav > div.nav-links > a{
+        display: none;
+    }
+    #root > div > nav > div.cart-widget {
+      display: none;
+    }
+    #root > div > nav > img {
+        position: relative;
+        margin: auto;
+    }
+    #root > div > div > ul > li > img {
+        width: 200px !important;
+        height: 200px !important;
+    }
+  }
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    margin-top: 20px;
+}
+#root > div > div > ul > li > img {
+    width: 200px !important;
+}
