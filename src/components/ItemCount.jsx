@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import './ItemCount.css';
 
 const ItemCount = ({ stock, product }) => {
   const [quantity, setQuantity] = useState(1);
