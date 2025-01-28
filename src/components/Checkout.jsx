@@ -1,8 +1,9 @@
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { db } from '../../config/firebase'; // Asegúrate de importar Firestore
-import { collection, addDoc } from 'firebase/firestore'; // Funciones para agregar documentos a Firestore
+import { db } from '../../config/firebase';
+import { collection, addDoc, doc, getDoc, updateDoc } from 'firebase/firestore';
+import './Checkout.css';
 
 const Checkout = () => {
   const { cart, getTotalPrice, clearCart } = useCart();
@@ -37,6 +38,36 @@ const Checkout = () => {
     }));
   };
 
+  // Función para obtener el producto por ID
+  const getProductById = async (id) => {
+    try {
+      const docRef = doc(db, "product", id);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        return { id: docSnap.id, ...docSnap.data() };
+      } else {
+        throw new Error("Producto no encontrado");
+      }
+    } catch (error) {
+      console.error("Error obteniendo el producto por ID:", error);
+      throw error;
+    }
+  };
+
+  // Función para actualizar el stock del producto
+  const updateProductStock = async (productId, newStock) => {
+    console.log(`Actualizando stock del producto ${productId} a ${newStock}`);
+    try {
+      const productRef = doc(db, "product", productId);
+      await updateDoc(productRef, { stock: newStock });
+      console.log(`Stock actualizado para el producto ${productId}`);
+    } catch (error) {
+      console.error(`Error al actualizar stock para ${productId}:`, error);
+      throw error;
+    }
+  };
+
   // Guarda el cliente en Firestore y registra la orden
   const handleConfirmPurchase = async () => {
     if (cart.length === 0) {
@@ -51,6 +82,22 @@ const Checkout = () => {
     }
 
     try {
+      // Validar stock antes de continuar
+      for (const item of cart) {
+        const product = await getProductById(item.id);
+        console.log(`Producto en Firebase: ${JSON.stringify(product)}`);
+
+        if (product.stock < item.quantity) {
+          console.error(`Stock insuficiente para el producto ${item.name}`);
+          alert(`No hay suficiente stock para el producto: ${item.name}`);
+          return;
+        }
+
+        // Actualizar stock después de la compra
+        const newStock = product.stock - item.quantity;
+        await updateProductStock(item.id, newStock);
+      }
+
       // Guarda el cliente en Firestore
       const clientRef = await addDoc(collection(db, 'clients'), clientData);
       console.log('Cliente registrado con ID:', clientRef.id);
