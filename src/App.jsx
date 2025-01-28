@@ -9,6 +9,7 @@ import './App.css';
 import Checkout from './components/Checkout';
 import UserForm from './components/UserForm';
 import ThankYou from './components/ThankYou';
+import Contact from './components/Contact';
 
 function App() {
   const mensaje = "¡Bienvenido a nuestra tienda online! Explora nuestros productos.";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/user-form" element={<UserForm />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/contacto" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

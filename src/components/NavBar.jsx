@@ -8,9 +8,6 @@ const NavBar = () => {
     <nav className="navbar">
       <img src={logo} alt="Logo de My Plants" className="navbar-logo" />
       <div className="nav-links">
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Inicio
-        </NavLink>
         <NavLink to="/productos" className={({ isActive }) => (isActive ? 'active' : '')}>
           Productos
         </NavLink>

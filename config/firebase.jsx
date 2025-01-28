@@ -1,6 +1,5 @@
-// firebase.js
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, getDoc, addDoc } from "firebase/firestore";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -10,12 +9,24 @@ const firebaseConfig = {
   storageBucket: "psmyplants.firebasestorage.app",
   messagingSenderId: "505700567380",
   appId: "1:505700567380:web:dc6d0df07df9ee6a6ee0c1",
-  measurementId: "G-334QEVZP8S"
+  measurementId: "G-334QEVZP8S",
 };
 
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
+
+// Función para guardar contacto en Firestore
+export const saveContact = async (contactData) => {
+  try {
+    const docRef = await addDoc(collection(db, "contactperson"), contactData);
+    console.log("Contacto agregado con ID:", docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error al guardar contacto:", error);
+    throw error;
+  }
+};
 
 // Función para obtener productos
 export const getProducts = async () => {
@@ -35,7 +46,7 @@ export const getProducts = async () => {
 // Función para obtener un producto por ID
 export const getProductById = async (id) => {
   try {
-    const docRef = doc(db, "product", id); // Usa la referencia db directamente
+    const docRef = doc(db, "product", id);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
