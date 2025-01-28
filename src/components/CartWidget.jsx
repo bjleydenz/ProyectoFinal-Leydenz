@@ -29,7 +29,7 @@ export default CartWidget;
 */
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const CartWidget = () => {
   const { getTotalQuantity } = useCart();

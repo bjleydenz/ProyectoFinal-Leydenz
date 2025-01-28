@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './ItemDetailContainer.css';
 import { getProductById } from '../../config/firebase';
 import ItemCount from './ItemCount';
+import { Circles } from 'react-loader-spinner';
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -33,7 +34,17 @@ const ItemDetailContainer = () => {
   return (
     <div className="item-detail-container">
       {loading ? (
-        <p>Cargando detalle del producto...</p>
+        <div className="loader-container">
+                  <Circles 
+                    height="80" 
+                    width="80" 
+                    color="#4fa94d" 
+                    ariaLabel="circles-loading" 
+                    visible={true} 
+                  />
+                  <p>Cargando detalle del producto...</p>
+                </div>
+        
       ) : error ? (
         <p>{error}</p>
       ) : item ? (
