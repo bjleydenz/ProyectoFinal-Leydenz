@@ -4,7 +4,7 @@ import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firesto
 
 // Configuración de Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyCBw4UHREb1yFxQTJtHZelwdzyPqqTAmig",
+  apiKey: import.meta.env.VITE_APIKEY,
   authDomain: "psmyplants.firebaseapp.com",
   projectId: "psmyplants",
   storageBucket: "psmyplants.firebasestorage.app",
