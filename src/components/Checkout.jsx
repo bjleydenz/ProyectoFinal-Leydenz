@@ -19,12 +19,10 @@ const Checkout = () => {
     email: '',
   });
 
-  // Maneja la apertura del modal
   const handleOpenModal = () => {
     setShowModal(true);
   };
 
-  // Maneja el cierre del modal
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -38,7 +36,6 @@ const Checkout = () => {
     }));
   };
 
-  // Función para obtener el producto por ID
   const getProductById = async (id) => {
     try {
       const docRef = doc(db, "product", id);
@@ -68,21 +65,18 @@ const Checkout = () => {
     }
   };
 
-  // Guarda el cliente en Firestore y registra la orden
   const handleConfirmPurchase = async () => {
     if (cart.length === 0) {
       alert('Tu carrito está vacío. No puedes realizar una compra.');
       return;
     }
 
-    // Validación de datos del cliente
     if (!clientData.firstName || !clientData.lastName || !clientData.dni || !clientData.phone || !clientData.email) {
       alert('Por favor, completa todos los campos del formulario.');
       return;
     }
 
     try {
-      // Validar stock antes de continuar
       for (const item of cart) {
         const product = await getProductById(item.id);
         console.log(`Producto en Firebase: ${JSON.stringify(product)}`);
@@ -116,14 +110,12 @@ const Checkout = () => {
       // Vaciar carrito
       clearCart();
 
-      // Redirigir a la página de agradecimiento con el ID de la orden
       navigate(`/thank-you/${orderRef.id}`);
     } catch (error) {
       console.error('Error al registrar la compra:', error);
       alert('Hubo un error al procesar tu compra. Intenta de nuevo.');
     }
 
-    // Cerrar el modal después de confirmar la compra
     setShowModal(false);
   };
 
@@ -139,7 +131,7 @@ const Checkout = () => {
       <p>Total: ${getTotalPrice()}</p>
       <button onClick={handleOpenModal}>Confirmar Compra</button>
 
-      {/* Modal para ingresar los datos del cliente */}
+      {}
       {showModal && (
         <div className="modal">
           <div className="modal-content">

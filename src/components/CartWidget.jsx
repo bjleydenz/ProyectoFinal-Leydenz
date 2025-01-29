@@ -11,7 +11,6 @@ const CartWidget = () => {
     navigate("/carrito");
   };
 
-  // Si no hay productos, no mostramos el carrito
   if (totalItems === 0) return null;
 
   return (
@@ -27,7 +26,6 @@ const CartWidget = () => {
 };
 
 CartWidget.propTypes = {
-  // Propiedades (en este caso no hay, ya que `useCart` gestiona el estado)
 };
 
 export default CartWidget;

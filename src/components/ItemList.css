@@ -29,13 +29,13 @@
   
   @media (max-width: 768px) {
     .item {
-      flex: 0 0 calc(50% - 20px); /* 2 columnas en pantallas pequeñas */
+      flex: 0 0 calc(50% - 20px);
     }
   }
   
   @media (max-width: 480px) {
     .item {
-      flex: 0 0 100%; /* 1 columna en pantallas extra pequeñas */
+      flex: 0 0 100%;
     }
   }
   

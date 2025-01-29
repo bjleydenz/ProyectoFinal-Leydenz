@@ -1,12 +1,11 @@
-import { useCart } from '../context/CartContext'; // Importa el contexto
+/* eslint-disable react/prop-types */
+import { useCart } from '../context/CartContext';
 
-// eslint-disable-next-line react/prop-types
 const CartItem = ({ item }) => {
-  const { removeItemFromCart } = useCart(); // Función para eliminar el producto del carrito
+  const { removeItemFromCart } = useCart();
 
-  // Eliminar producto del carrito
   const handleRemove = () => {
-    removeItemFromCart(item.id); // Llamada a la función para eliminar el producto
+    removeItemFromCart(item.id);
   };
 
   return (

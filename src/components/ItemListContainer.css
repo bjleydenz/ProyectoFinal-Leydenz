@@ -60,20 +60,18 @@
     color: #333;
   }
   
-  /* Estilos para los productos en pantalla pequeña */
   @media (max-width: 768px) {
     li {
-      flex: 0 0 calc(50% - 20px); /* 2 columnas en pantallas pequeñas */
+      flex: 0 0 calc(50% - 20px);
     }
   }
   
   @media (max-width: 480px) {
     li {
-      flex: 0 0 100%; /* 1 columna en pantallas extra pequeñas */
+      flex: 0 0 100%;
     }
   }
   
-  /* Estilo para mensaje de error */
   .error-message {
     text-align: center;
     color: red;

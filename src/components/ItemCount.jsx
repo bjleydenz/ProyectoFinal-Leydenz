@@ -87,7 +87,6 @@ const ItemCount = ({ stock, product }) => {
   );
 };
 
-// Validación de PropTypes
 ItemCount.propTypes = {
   stock: PropTypes.number.isRequired,
   product: PropTypes.shape({

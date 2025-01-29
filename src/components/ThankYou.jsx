@@ -49,7 +49,6 @@ const ThankYou = () => {
     window.print();
   };
 
-  // Render del estado de carga
   if (loading) {
     return (
       <div className="loader-container">
@@ -65,12 +64,10 @@ const ThankYou = () => {
     );
   }
 
-  // Render del estado de error
   if (error) {
     return <p>{error}</p>;
   }
 
-  // Render del contenido principal
   return (
     <div className="thank-you-container">
       {order && client ? (

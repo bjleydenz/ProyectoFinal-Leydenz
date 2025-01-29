@@ -1,6 +1,6 @@
 .item-detail-container {
     padding: 40px 20px;
-    background-color: rgb(144, 238, 144); /* Color de fondo consistente con el diseño */
+    background-color: rgb(144, 238, 144);
     display: flex;
     flex-direction: column;
     align-items: center;
